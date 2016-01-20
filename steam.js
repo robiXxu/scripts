@@ -26,26 +26,18 @@ $.get(document.getElementsByClassName('giveaway__heading__name')[1].href,functio
 	console.log(formData.xsrf_token);
 	console.log(formData.code);
 });
+var baseUrl = '/giveaway/'+formData.code+'/bit-blaster-xl';
+							checkTimezone('Europe/Helsinki', formData.xsrf_token);
+
 
 $.post('http://www.steamgifts.com/ajax.php' , {
 	xsrf_token:formData.xsrf_token, 
 	do:formData.do,
 	code:formData.code
 }).done(function( data ) {
-	document.cookie
-    alert( "Data Loaded: " + data );
+    console.log(data);
  });
 
-
-
-$.post('http://www.steamgifts.com/ajax.php?xsrf_token='+formData.xsrf_token+'&do='+formData.do+'&code='+formData.code , {
-	xsrf_token:formData.xsrf_token, 
-	do:formData.do,
-	code:formData.code
-}).done(function( data ) {
-	document.cookie
-    alert( "Data Loaded: " + data );
- });
 
 
 
