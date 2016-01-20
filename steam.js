@@ -16,7 +16,7 @@ var formData = {
 	do:'entry_insert',
 };
 
-$.get(document.getElementsByClassName('giveaway__heading__name')[3].href,function(data){
+$.get(document.getElementsByClassName('giveaway__heading__name')[1].href,function(data){
 	var form = data.substring(data.indexOf('<input type="hidden" name="xsrf_token" value="'),data.indexOf('<div data-do="entry_insert"'));
 	var oldform = form;
 	var xsrf_token =  form.substring(form.indexOf('value="'),form.indexOf('" />'));
@@ -32,9 +32,20 @@ $.post('http://www.steamgifts.com/ajax.php' , {
 	do:formData.do,
 	code:formData.code
 }).done(function( data ) {
+	document.cookie
     alert( "Data Loaded: " + data );
  });
 
+
+
+$.post('http://www.steamgifts.com/ajax.php?xsrf_token='+formData.xsrf_token+'&do='+formData.do+'&code='+formData.code , {
+	xsrf_token:formData.xsrf_token, 
+	do:formData.do,
+	code:formData.code
+}).done(function( data ) {
+	document.cookie
+    alert( "Data Loaded: " + data );
+ });
 
 
 
