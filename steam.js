@@ -27,7 +27,7 @@ $.get(document.getElementsByClassName('giveaway__heading__name')[1].href,functio
 	console.log(formData.code);
 });
 var baseUrl = '/giveaway/'+formData.code+'/bit-blaster-xl';
-							checkTimezone('Europe/Helsinki', formData.xsrf_token);
+checkTimezone('Europe/Helsinki', formData.xsrf_token);
 
 
 $.post('http://www.steamgifts.com/ajax.php' , {
