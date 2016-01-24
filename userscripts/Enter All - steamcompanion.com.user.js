@@ -13,7 +13,7 @@
 (function(){
 var links = document.getElementsByClassName('giveaway-links');
 var formdataArray = [];
-
+var count=0;
 function formData(id) {
 	this.script= 'enter';
 	this.giftID=id;
@@ -32,15 +32,15 @@ function getAllData(){
 						var item = new formData(giftID.trim());
 						formdataArray.push(item);
 						console.log("Gift with ID [" + item.giftID + "] added to list");
+						if(count==0){
+							createButton();
+						}
 					}
 				});
 			}
 		}
-		setTimeout(function(){
-			if(formdataArray.length>0){
-				createButton();	
-			}
-		},1500);
+		
+		
 	}
 }
 function enterAll(){
@@ -61,6 +61,7 @@ function enterAll(){
 	}
 }
 function createButton(){
+	count+=1;
 	var li = document.createElement("li");
 	var link = document.createElement("a");
 
