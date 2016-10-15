@@ -2,7 +2,7 @@
 // @name         linkedIn Search Connect
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  linkedIn autoAdd
+// @description  linkedIn Search AutoConnect
 // @author       You
 // @match        https://www.linkedin.com/vsearch/*
 // @grant        none
@@ -11,8 +11,10 @@
 
 (function() {
     'use strict';
-
-    var nexturl = "https://www.linkedin.com" + $($('.next > *')[0]).attr('href');
+    var nexturl = "https://www.linkedin.com/home";
+    if( typeof($($('.next > *')[0]).attr('href')) !== "undefined"){
+        nexturl = "https://www.linkedin.com" + $($('.next > *')[0]).attr('href');
+    }
     console.log(nexturl);
     var addConnections = function(){
         var pageConnects = $('.primary-action-button');
